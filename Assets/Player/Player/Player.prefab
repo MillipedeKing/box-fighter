@@ -303,6 +303,8 @@ MonoBehaviour:
   JumpTime: 0.1
   isJumping: 0
   isFalling: 0
+  isJumpPressed: 0
+  wasJumpJustPressed: 0
   JumpTimeCounter: 0
   ExtraHieght: 1
   dashingpower: 100

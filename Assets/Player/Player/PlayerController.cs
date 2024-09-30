@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public bool isJumping;
     public bool isFalling;
+    public bool isJumpPressed;
+    public bool wasJumpJustPressed;
     public float JumpTimeCounter;
     [SerializeField] private float ExtraHieght = 0.25f;
 
@@ -68,8 +70,6 @@ public class PlayerController : MonoBehaviour, IDamageable
             }
         }
 
-        isGrounded();
-
         if (!isDead)
         {
             if (isdashing)
@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour, IDamageable
                 return;
             }
             Move();
-            // Jump();
+            Jump();
             // if (Userinput.instance.controls.Gameplay.dashbutton.WasPressedThisFrame() && candash)
             // {
             //     StartCoroutine(OnDash());
@@ -118,13 +118,14 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
     }
     
-    // public void OnJump() {
-    //     // tbd
-    // }
+    public void OnJump(InputValue value) {
+        isJumpPressed = value.isPressed;
+        wasJumpJustPressed = isJumpPressed;
+    }
 
-    public void OnJump(InputValue value)
+    public void Jump()
     {
-        if (isGrounded() && value.isPressed)
+        if (isGrounded() && wasJumpJustPressed)
         {
             //button was just pushed
             isJumping = true;
@@ -132,7 +133,7 @@ public class PlayerController : MonoBehaviour, IDamageable
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
         
-        if (value.isPressed)
+        if (isJumpPressed)
         {
             
             if (JumpTimeCounter > 0 && isJumping)
@@ -145,9 +146,11 @@ public class PlayerController : MonoBehaviour, IDamageable
             {
                 isJumping = false;
             }
+            
+            wasJumpJustPressed = false;
         }
 
-        if (!value.isPressed)
+        if (!isJumpPressed)
         {
             //button released
             isJumping = false;
