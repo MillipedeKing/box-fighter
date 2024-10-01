@@ -299,8 +299,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   moveInput: {x: 0, y: 0}
-  jumpingPower: 15
-  JumpTime: 0.1
+  jumpingPower: 10
+  JumpTime: 0.25
   isJumping: 0
   isFalling: 0
   isJumpPressed: 0
@@ -453,7 +453,7 @@ MonoBehaviour:
   - {x: 0.5085087, y: -0.5030463, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -80976
+  m_InstanceId: 76354
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5085087, y: 0.5030463, z: 0}

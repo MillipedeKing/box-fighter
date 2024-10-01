@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Grapplerclippers : MonoBehaviour
+public class Grapplerclipper : MonoBehaviour
 {
     public Collider2D mycollider;
     public Rigidbody2D rb;
@@ -22,7 +22,6 @@ public class Grapplerclippers : MonoBehaviour
     void Start()
     {
         // ToDo: replace with player instance for multiplayer.
-        player = GameObject.Find("Player");
         mycollider = gameObject.GetComponent<Collider2D>();
         rb = gameObject.GetComponent<Rigidbody2D>();
         Physics2D.IgnoreCollision(mycollider, player.GetComponent<Collider2D>());

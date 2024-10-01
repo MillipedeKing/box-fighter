@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     public float dashingCooldown = 1f;
     // Start is called before the first frame update
     [Header("Grappling hook")]
-    public bool isConnected;
+    public bool isConnected = false;
 
     [Header("Health")]
     public float HP;
@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
         else
         {
-            rb.AddForce(new Vector2(horizontal, 0));
+            rb.AddForce(new Vector2(horizontal * speed, 0));
         }
 
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
@@ -159,6 +159,10 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private bool isGrounded()
     {
+        if (isConnected) {
+            return true;
+        }
+        
         groundhit = Physics2D.BoxCast(myCollider.bounds.center, myCollider.bounds.size, 0f, Vector2.down, ExtraHieght, groundLayer);
 
         if (groundhit.collider != null)

@@ -16,7 +16,7 @@ public class Gunn : MonoBehaviour
     private Vector2 direction;
     public Transform Aimer;
     public float maxGrapplersleft = 1;
-    public float Grapplersleft;
+    public float Grapplersleft = 1;
     private Transform player;
     public float arrowSpeed;
     public PlayerController playerController;
@@ -42,7 +42,8 @@ public class Gunn : MonoBehaviour
             shootTime = Time.time;
             Grapplerinst = Instantiate(Grappler, GrapplerSpawn.position, GrappleGun.transform.rotation);
             Grapplerclipper grapplerclipper = Grapplerinst.GetComponent<Grapplerclipper>();
-            // grapplerclipper.playerController = playerController;
+            grapplerclipper.player = player.gameObject;
+            grapplerclipper.playerController = playerController;
             Grapplersleft -= 1;
         }
            
