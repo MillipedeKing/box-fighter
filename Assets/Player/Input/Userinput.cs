@@ -31,7 +31,7 @@ private void Awake()
 
     private void OnEnable()
     {
-        controls.Enable();
+        // controls.Enable();
     }
 
     private void OnDisable()

@@ -236,11 +236,15 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void OnRightTrigger(InputValue value)
     {
-        gun.SetRightTrigger(value.isPressed);
+        if (value != null && value.Get<float>() > 0) {
+            gun.ShootGrappler();
+        } else {
+            gun.RecallGrappler();
+        }
     }
     public void OnLeftTrigger(InputValue value)
     {
-        gun.SetLeftTrigger(value.isPressed);
+        // Shoot Arrow
     }
 }
 
