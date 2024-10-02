@@ -21,6 +21,16 @@ public class Gunn : MonoBehaviour
     public float arrowSpeed;
     public PlayerController playerController;
     public float shootTime;
+
+    [Header("Triggers")]
+    public bool rightTriggerWasPressed;
+    public bool rightTriggerIsHeld;
+    public bool rightTriggerReleased;
+    //
+    public bool leftTriggerWasPressed;
+    public bool leftTriggerIsHeld;
+    public bool leftTriggerReleased;
+
     private void Start()
     {
         player = transform.parent.transform;
@@ -29,14 +39,12 @@ public class Gunn : MonoBehaviour
     }
     private void Update()
     {
-        HandleGunRotation();
-        HandleGunShooting();
-        SetAimerPosition();
+  
     }
 
     private void HandleGunShooting()
     {
-        if (Userinput.instance.controls.Gameplay.Trigger.WasPressedThisFrame() && Grapplersleft > 0)
+        if (leftTriggerWasPressed && Grapplersleft > 0)
         {
             //Spawning Grappler
             shootTime = Time.time;
@@ -47,14 +55,14 @@ public class Gunn : MonoBehaviour
             Grapplersleft -= 1;
         }
            
-        if ( Userinput.instance.controls.Gameplay.Trigger.WasReleasedThisFrame()) //&& Grapplersleft > 0)
+        if ( leftTriggerWasPressed)
         {
            Destroy(Grapplerinst);
            playerController.isConnected = false;
            Grapplersleft += 1;
         }
 
-        if (Userinput.instance.controls.Gameplay.RightTrigger.IsPressed())
+        if (rightTriggerIsHeld)
         {
            arrowSpeed += 0.1f;
            if (arrowSpeed > 20f)
@@ -63,7 +71,7 @@ public class Gunn : MonoBehaviour
            }
         }
            
-        if (Userinput.instance.controls.Gameplay.RightTrigger.WasReleasedThisFrame())
+        if (rightTriggerReleased)
         {
             //Spawning Grappler
             Arrowinst = Instantiate(Arrow, GrapplerSpawn.position, GrappleGun.transform.rotation);
@@ -71,31 +79,35 @@ public class Gunn : MonoBehaviour
             arrowSpeed = 0;
         }
     }
-    private void HandleGunRotation()
+    public void Look(InputValue value)
     {
-    
-        worldPosition = Aimer.position;// Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        Vector2 input = value.Get<Vector2>();
+        //
+        worldPosition = Aimer.position;
         direction = (worldPosition - (Vector2)GrappleGun.transform.position).normalized;
         GrappleGun.transform.right = direction;
-
-        // angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-        // Vector3 localScale = new Vector3(1f, 1f, 1f);
-        // if ( angle > 90 || angle < -90)
-        // {
-        //     localScale.y = -1f;
-        // }
-        // else
-        // {
-        //     localScale.y = 1f;
-        // }
-        // GrappleGun.transform.localScale = localScale;
+        //
+        Aimer.position = player.position + (Vector3) input;
     }
-    private void SetAimerPosition()
+
+    public void SetRightTrigger(bool isPressed)
+    {
+        if (!isPressed && rightTriggerIsHeld) {
+            rightTriggerReleased = true;
+            rightTriggerWasPressed = false;
+        } else if (isPressed && !rightTriggerIsHeld) {
+            rightTriggerWasPressed = true;
+            rightTriggerWasPressed = false;
+        } else {
+            rightTriggerReleased = false;
+            rightTriggerWasPressed = false;
+        }
+
+        rightTriggerIsHeld = isPressed;
+    }
+        public void SetLeftTrigger(bool isPressed)
     {
         
-        Vector2 input = Userinput.instance.controls.Gameplay.Look.ReadValue<Vector2>();
-        Aimer.position = player.position + (Vector3) input;
     }
 }
 

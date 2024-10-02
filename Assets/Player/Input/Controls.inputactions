@@ -15,7 +15,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Trigger",
+                    "name": "leftTrigger",
                     "type": "Button",
                     "id": "3d49d35c-e567-42d6-985e-b39911e19513",
                     "expectedControlType": "Button",
@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "RightTrigger",
+                    "name": "rightTrigger",
                     "type": "Button",
                     "id": "8f9ffd54-5529-4e31-b8fa-bfe41c06806b",
                     "expectedControlType": "Button",
@@ -79,7 +79,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Trigger",
+                    "action": "leftTrigger",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -90,13 +90,13 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RightTrigger",
+                    "action": "rightTrigger",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "67fbb108-ec84-4a36-9364-d351f1d4cfdb",
+                    "id": "76f60adb-98c1-4e2a-bb64-1cf421197f25",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",

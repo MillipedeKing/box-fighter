@@ -148,7 +148,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.005122484, w: 0.9999869}
   m_LocalPosition: {x: -8.08, y: -1.75, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 0.40825123, y: 0.47147882, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5502265180640148481}
@@ -453,7 +453,7 @@ MonoBehaviour:
   - {x: 0.5085087, y: -0.5030463, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 76354
+  m_InstanceId: -27018
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5085087, y: 0.5030463, z: 0}

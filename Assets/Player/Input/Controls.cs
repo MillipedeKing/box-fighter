@@ -37,7 +37,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Trigger"",
+                    ""name"": ""leftTrigger"",
                     ""type"": ""Button"",
                     ""id"": ""3d49d35c-e567-42d6-985e-b39911e19513"",
                     ""expectedControlType"": ""Button"",
@@ -46,7 +46,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""RightTrigger"",
+                    ""name"": ""rightTrigger"",
                     ""type"": ""Button"",
                     ""id"": ""8f9ffd54-5529-4e31-b8fa-bfe41c06806b"",
                     ""expectedControlType"": ""Button"",
@@ -101,7 +101,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Trigger"",
+                    ""action"": ""leftTrigger"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -112,13 +112,13 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RightTrigger"",
+                    ""action"": ""rightTrigger"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""67fbb108-ec84-4a36-9364-d351f1d4cfdb"",
+                    ""id"": ""76f60adb-98c1-4e2a-bb64-1cf421197f25"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -213,8 +213,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_dashbutton = m_Gameplay.FindAction("dashbutton", throwIfNotFound: true);
-        m_Gameplay_Trigger = m_Gameplay.FindAction("Trigger", throwIfNotFound: true);
-        m_Gameplay_RightTrigger = m_Gameplay.FindAction("RightTrigger", throwIfNotFound: true);
+        m_Gameplay_leftTrigger = m_Gameplay.FindAction("leftTrigger", throwIfNotFound: true);
+        m_Gameplay_rightTrigger = m_Gameplay.FindAction("rightTrigger", throwIfNotFound: true);
         m_Gameplay_Look = m_Gameplay.FindAction("Look", throwIfNotFound: true);
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
@@ -280,8 +280,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Gameplay;
     private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
     private readonly InputAction m_Gameplay_dashbutton;
-    private readonly InputAction m_Gameplay_Trigger;
-    private readonly InputAction m_Gameplay_RightTrigger;
+    private readonly InputAction m_Gameplay_leftTrigger;
+    private readonly InputAction m_Gameplay_rightTrigger;
     private readonly InputAction m_Gameplay_Look;
     private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Move;
@@ -290,8 +290,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         private @Controls m_Wrapper;
         public GameplayActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @dashbutton => m_Wrapper.m_Gameplay_dashbutton;
-        public InputAction @Trigger => m_Wrapper.m_Gameplay_Trigger;
-        public InputAction @RightTrigger => m_Wrapper.m_Gameplay_RightTrigger;
+        public InputAction @leftTrigger => m_Wrapper.m_Gameplay_leftTrigger;
+        public InputAction @rightTrigger => m_Wrapper.m_Gameplay_rightTrigger;
         public InputAction @Look => m_Wrapper.m_Gameplay_Look;
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
@@ -307,12 +307,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @dashbutton.started += instance.OnDashbutton;
             @dashbutton.performed += instance.OnDashbutton;
             @dashbutton.canceled += instance.OnDashbutton;
-            @Trigger.started += instance.OnTrigger;
-            @Trigger.performed += instance.OnTrigger;
-            @Trigger.canceled += instance.OnTrigger;
-            @RightTrigger.started += instance.OnRightTrigger;
-            @RightTrigger.performed += instance.OnRightTrigger;
-            @RightTrigger.canceled += instance.OnRightTrigger;
+            @leftTrigger.started += instance.OnLeftTrigger;
+            @leftTrigger.performed += instance.OnLeftTrigger;
+            @leftTrigger.canceled += instance.OnLeftTrigger;
+            @rightTrigger.started += instance.OnRightTrigger;
+            @rightTrigger.performed += instance.OnRightTrigger;
+            @rightTrigger.canceled += instance.OnRightTrigger;
             @Look.started += instance.OnLook;
             @Look.performed += instance.OnLook;
             @Look.canceled += instance.OnLook;
@@ -329,12 +329,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @dashbutton.started -= instance.OnDashbutton;
             @dashbutton.performed -= instance.OnDashbutton;
             @dashbutton.canceled -= instance.OnDashbutton;
-            @Trigger.started -= instance.OnTrigger;
-            @Trigger.performed -= instance.OnTrigger;
-            @Trigger.canceled -= instance.OnTrigger;
-            @RightTrigger.started -= instance.OnRightTrigger;
-            @RightTrigger.performed -= instance.OnRightTrigger;
-            @RightTrigger.canceled -= instance.OnRightTrigger;
+            @leftTrigger.started -= instance.OnLeftTrigger;
+            @leftTrigger.performed -= instance.OnLeftTrigger;
+            @leftTrigger.canceled -= instance.OnLeftTrigger;
+            @rightTrigger.started -= instance.OnRightTrigger;
+            @rightTrigger.performed -= instance.OnRightTrigger;
+            @rightTrigger.canceled -= instance.OnRightTrigger;
             @Look.started -= instance.OnLook;
             @Look.performed -= instance.OnLook;
             @Look.canceled -= instance.OnLook;
@@ -373,7 +373,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     public interface IGameplayActions
     {
         void OnDashbutton(InputAction.CallbackContext context);
-        void OnTrigger(InputAction.CallbackContext context);
+        void OnLeftTrigger(InputAction.CallbackContext context);
         void OnRightTrigger(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);

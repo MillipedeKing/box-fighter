@@ -48,6 +48,8 @@ public class PlayerController : MonoBehaviour, IDamageable
     public float HP;
     public float maxHp;
     public bool isDead;
+    [Header("gun")]
+    public Gunn gun;
 
     void Start()
     {
@@ -55,6 +57,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         maxHp = HP;
         myCollider = gameObject.GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
+        gun = gameObject.GetComponentInChildren<Gunn>();
     }
 
     // Update is called once per frame
@@ -106,7 +109,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
         else
         {
-            rb.AddForce(new Vector2(horizontal * speed, 0));
+            rb.AddForce(new Vector2(horizontal * (speed/2), 0));
         }
 
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
@@ -115,6 +118,13 @@ public class PlayerController : MonoBehaviour, IDamageable
             Vector3 localScale = transform.localScale;
             // localScale.x *= -1f;
             transform.localScale = localScale;
+        }
+    }
+
+    public void OnLook(InputValue value)
+    {
+        if (gun) {
+            gun.Look(value);
         }
     }
     
@@ -222,17 +232,16 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         rb.velocity = new Vector2(horizontal * speed, vertical * speed);
 
-        // if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
-        // {
-        //     isFacingRight = !isFacingRight;
-        //     Vector3 localScale = transform.localScale;
-        //     // localScale.x *= -1f;
-        //     transform.localScale = localScale;
-        // }
     }
 
+    public void OnRightTrigger(InputValue value)
+    {
+        gun.SetRightTrigger(value.isPressed);
+    }
+    public void OnLeftTrigger(InputValue value)
+    {
+        gun.SetLeftTrigger(value.isPressed);
+    }
 }
-// if (Input.GetButtonDown("Jump") && mycollider.IsTouchingLayers(groundLayer))
-// {
-//      rb.AddForce(Vector2.up * jumpingPower, ForceMode2D.Impulse);
-// }
+
+
