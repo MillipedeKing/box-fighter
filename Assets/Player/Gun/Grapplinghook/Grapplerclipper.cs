@@ -40,8 +40,8 @@ public class Grapplerclipper : MonoBehaviour
     private void Update()
     {
         lineRenderer.SetPositions(new Vector3[] {transform.position, player.transform.position});
-        if (!minRopeLength.IsUnityNull()) {
-            springJoint.distance = 3f;
+        if (minRopeLength > 0) {
+            springJoint.distance = minRopeLength;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
