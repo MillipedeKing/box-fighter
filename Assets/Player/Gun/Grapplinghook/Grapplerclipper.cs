@@ -15,7 +15,9 @@ public class Grapplerclipper : MonoBehaviour
     public DistanceJoint2D springJoint;
     public LineRenderer lineRenderer;
     public bool disable;
-    
+    public Material grappleRopeMaterial;
+
+    public float minRopeLength;
     public PlayerController playerController;
 
 
@@ -31,12 +33,16 @@ public class Grapplerclipper : MonoBehaviour
         lineRenderer = gameObject.AddComponent<LineRenderer>();
         lineRenderer.startWidth  = 0.05f;
         lineRenderer.endWidth = 0.02f;
+        lineRenderer.material = grappleRopeMaterial;
         playerController = player.GetComponent<PlayerController>();
     }
 
     private void Update()
     {
         lineRenderer.SetPositions(new Vector3[] {transform.position, player.transform.position});
+        if (!minRopeLength.IsUnityNull()) {
+            springJoint.distance = 3f;
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

@@ -291,6 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a310e8434b027040ba83ad2fc108c6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementValues: {x: 0, y: 0}
   horizontal: 0
   vertical: 0
   speed: 7
@@ -299,7 +300,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   moveInput: {x: 0, y: 0}
-  jumpingPower: 10
+  jumpingPower: 13
   JumpTime: 0.25
   isJumping: 0
   isFalling: 0
@@ -314,6 +315,7 @@ MonoBehaviour:
   HP: 0
   maxHp: 0
   isDead: 0
+  gun: {fileID: 0}
 --- !u!96 &4081122521799321639
 TrailRenderer:
   serializedVersion: 3
@@ -453,7 +455,7 @@ MonoBehaviour:
   - {x: 0.5085087, y: -0.5030463, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -27018
+  m_InstanceId: 32232
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5085087, y: 0.5030463, z: 0}
@@ -563,7 +565,13 @@ MonoBehaviour:
   Arrow: {fileID: 5219508255258334871, guid: cd93e5d36bf0dca44b3dffb5870cff3b, type: 3}
   Aimer: {fileID: 5249641809478988260}
   maxGrapplersleft: 1
-  Grapplersleft: 1
+  grapplersLeft: 1
   arrowSpeed: 0
   playerController: {fileID: 6221090367811711200}
   shootTime: 0
+  movement: {x: 0, y: 0}
+  look: {x: 0, y: 0}
+  isGrapplerButtonHeld: 0
+  leftTriggerWasPressed: 0
+  leftTriggerIsHeld: 0
+  leftTriggerReleased: 0

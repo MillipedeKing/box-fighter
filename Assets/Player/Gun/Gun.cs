@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -22,12 +23,12 @@ public class Gunn : MonoBehaviour
     public float arrowSpeed;
     public PlayerController playerController;
     public float shootTime;
+    [Header("Inputs")]
+    public Vector2 movement;
+    public Vector2 look;
 
     [Header("Triggers")]
     public bool isGrapplerButtonHeld;
-    public bool leftTriggerWasPressed;
-    public bool leftTriggerIsHeld;
-    public bool leftTriggerReleased;
 
     private void Start()
     {
@@ -37,7 +38,16 @@ public class Gunn : MonoBehaviour
     }
     private void Update()
     {
+        Aim();
         HandleGunShooting();
+    }
+
+    private void Aim() {
+        Vector2 input = look != Vector2.zero ? look : movement;
+        worldPosition = Aimer.position;
+        direction = (worldPosition - (Vector2)GrappleGun.transform.position).normalized;
+        GrappleGun.transform.right = direction;
+        Aimer.position = player.position + (Vector3) input;
     }
 
     private void HandleGunShooting()
@@ -62,15 +72,9 @@ public class Gunn : MonoBehaviour
         //     arrowSpeed = 0;
         // }
     }
-    public void Look(InputValue value)
+    public void Look(InputValue value, Vector2 movementVAlues)
     {
-        Vector2 input = value.Get<Vector2>();
-        //
-        worldPosition = Aimer.position;
-        direction = (worldPosition - (Vector2)GrappleGun.transform.position).normalized;
-        GrappleGun.transform.right = direction;
-        //
-        Aimer.position = player.position + (Vector3) input;
+        
     }
 
     public void ShootGrappler() {
@@ -95,7 +99,5 @@ public class Gunn : MonoBehaviour
     }
 
     // Add method for crossBowButton
-    
-
 }
 

@@ -10,6 +10,7 @@ using UnityEngine.Rendering;
 public class PlayerController : MonoBehaviour, IDamageable
 {
     [Header("Player move")]
+    public Vector2 movementValues = Vector2.zero;
     public float horizontal;
     public float vertical;
     public float speed = 8f;
@@ -95,10 +96,10 @@ public class PlayerController : MonoBehaviour, IDamageable
     }
 
     public void OnMove(InputValue value) {
-        Vector2 movementValues = value.Get<Vector2>();
-        // Vector2 movementValues = new Vector2(1, 0);
+        movementValues = value.Get<Vector2>();
         horizontal = movementValues.x;
         vertical = movementValues.y;
+        gun.movement = movementValues;
     }
 
     private void Move()
@@ -124,7 +125,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     public void OnLook(InputValue value)
     {
         if (gun) {
-            gun.Look(value);
+            gun.look = value.Get<Vector2>();
         }
     }
     
