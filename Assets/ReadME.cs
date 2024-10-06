@@ -16,7 +16,7 @@
 //}
 // Dash [Done]
 //}
-// crossbow mechanics [] (Ivan)
+// crossbow mechanics [Done] (Ivan)
 // grappling gun [Done] (Ivan)
 //{
 // Grappler = gets stuck on collision [Done]  
@@ -29,6 +29,7 @@
 // Level Event initializer code []
 // Colliders efficiently working [DONE] (Ivan)
 // MultiPlayer [Almost] (Ivan)
+// Fix spinning aimer [] (Ivan)
 
 // Not priority:
 // Level Abilities: (Peter, Ivan)

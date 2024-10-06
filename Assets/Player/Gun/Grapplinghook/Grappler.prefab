@@ -151,6 +151,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 0}
   disable: 0
   grappleRopeMaterial: {fileID: 2100000, guid: cd8b6cd20651c67429b84bc06a5a45fa, type: 2}
+  minRopeLength: 0
   playerController: {fileID: 0}
 --- !u!58 &-7914745822956103502
 CircleCollider2D:

@@ -237,7 +237,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void OnRightTrigger(InputValue value)
     {
-        if (value != null && value.Get<float>() > 0) {
+        // Debug.Log(value.Get<float>());
+        if (value != null && value.Get<float>() > 0.5f) {
             gun.ShootGrappler();
         } else {
             gun.RecallGrappler();
