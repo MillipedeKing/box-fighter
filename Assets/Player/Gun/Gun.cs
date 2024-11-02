@@ -99,7 +99,9 @@ public class Gunn : MonoBehaviour
          //Spawning Arrow
         if (arrowsLeft > 0){
         Arrowinst = Instantiate(Arrow, GrapplerSpawn.position, GrappleGun.transform.rotation);
-        Arrowinst.GetComponent<ArrowBehavior>().arrowSpeedMultiplier = arrowSpeed;
+        ArrowBehavior arrowBehavior = Arrowinst.GetComponent<ArrowBehavior>();
+        arrowBehavior.arrowSpeedMultiplier = arrowSpeed;
+        arrowBehavior.playerController = playerController;
         arrowSpeed = 0;
         arrowsLeft -= 1;
         }

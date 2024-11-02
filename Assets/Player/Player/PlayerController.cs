@@ -9,6 +9,9 @@ using UnityEngine.Rendering;
 
 public class PlayerController : MonoBehaviour, IDamageable
 {
+    [Header ("Player Score")]
+    public string playerId = "";
+    public int score = 0;
     [Header("Player move")]
     public Vector2 movementValues = Vector2.zero;
     public float horizontal;
@@ -236,9 +239,10 @@ public class PlayerController : MonoBehaviour, IDamageable
             rb.gravityScale = 0;
             myCollider.enabled = false;
             isDead = true;
-
-            
         }
+    }
+    public bool IsDead() {
+        return isDead;
     }
     private void ghostMode()
     {

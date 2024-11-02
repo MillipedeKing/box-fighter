@@ -11,9 +11,9 @@ public class ArrowBehavior : MonoBehaviour
   public float arrowSpeedMultiplier = 0.2f;
   private Rigidbody2D rb;
   private bool isActive;
-
   public float damage = 10;
   public bool damageActive;
+  public PlayerController playerController;
 
 
   private void Start()
@@ -44,7 +44,14 @@ public class ArrowBehavior : MonoBehaviour
       if (iDamageable != null && damageActive)
       {
         //damage thing
+        // 1. Add a "GetId" method to iDamageable.
+        // 2. Compare the id to this.playerController.playerId.
+        //  If the iDamageable id is == to this.playerController.Id then decrement the score instead of incrementing it.
+        // if (iDamageable. == this)
         iDamageable.Damage(damage);
+        if (iDamageable.IsDead()) {
+          playerController.score += 1;
+        }
       }
     }
      private void OnCollisionEnter2D(){
