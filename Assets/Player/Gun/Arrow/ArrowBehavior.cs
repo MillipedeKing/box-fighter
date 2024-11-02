@@ -13,6 +13,7 @@ public class ArrowBehavior : MonoBehaviour
   private bool isActive;
 
   public float damage = 10;
+  public bool damageActive;
 
 
   private void Start()
@@ -20,7 +21,7 @@ public class ArrowBehavior : MonoBehaviour
     rb = GetComponent<Rigidbody2D>();
     SetStraightVelocity();
     isActive = true;
-  
+    damageActive = true;
   }
   private void SetStraightVelocity()
   {
@@ -40,10 +41,15 @@ public class ArrowBehavior : MonoBehaviour
     {
       isActive = false;
        IDamageable iDamageable = collision.gameObject.GetComponent<IDamageable>();
-      if (iDamageable != null)
+      if (iDamageable != null && damageActive)
       {
         //damage thing
         iDamageable.Damage(damage);
       }
+    }
+     private void OnCollisionEnter2D(){
+      
+
+      damageActive = false;
     }
 }

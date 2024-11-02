@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     private RaycastHit2D groundhit;
 
     [Header("Dashing")]
+    private bool dashButtonPressed = false;
     private bool candash = true;
     private bool isdashing;
     public float dashingpower = 500f;
@@ -82,10 +83,10 @@ public class PlayerController : MonoBehaviour, IDamageable
             }
             Move();
             Jump();
-            // if (Userinput.instance.controls.Gameplay.dashbutton.WasPressedThisFrame() && candash)
-            // {
-            //     StartCoroutine(OnDash());
-            // }
+            if (dashButtonPressed && candash)
+            {
+                StartCoroutine(HandleDash());
+            }
         }
 
         if (isDead)
@@ -95,11 +96,21 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
     }
 
+    public void OnDashbutton(InputValue value){
+        if (value != null && value.Get<float>() > 0.5f)
+        {
+            dashButtonPressed = value.isPressed;
+        }
+    }
+
     public void OnMove(InputValue value) {
         movementValues = value.Get<Vector2>();
         horizontal = movementValues.x;
         vertical = movementValues.y;
-        gun.movement = movementValues;
+        if (gun != null)
+        {
+            gun.movement = movementValues;
+        }
     }
 
     private void Move()
@@ -186,7 +197,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
 
     }
-    private IEnumerator OnDashbutton()
+    private IEnumerator HandleDash()
     {
 
         if (isFacingRight)
@@ -235,18 +246,29 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     }
 
-    public void OnRightTrigger(InputValue value)
+    public void OnLeftTrigger(InputValue value)
     {
         // Debug.Log(value.Get<float>());
+        if (!isDead){
         if (value != null && value.Get<float>() > 0.5f) {
             gun.ShootGrappler();
         } else {
             gun.RecallGrappler();
         }
+        }
     }
-    public void OnLeftTrigger(InputValue value)
+    public void OnRightTrigger(InputValue value)
     {
         // Shoot Arrow
+        //   Debug.Log(value.Get<float>());
+        if (!isDead){
+        if (value != null && value.Get<float>() > 0.5f) {
+            gun.crossBowButtonHeld = true;
+        } else {
+            gun.crossBowButtonHeld = false;
+            gun.HandleCrossBowRelease();
+        }
+        }
     }
 }
 

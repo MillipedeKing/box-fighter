@@ -14,6 +14,7 @@ public class Gunn : MonoBehaviour
     private GameObject grapplerInst;
     public GameObject Arrowinst;
     public GameObject Arrow;
+    public float arrowsLeft;
     private Vector2 worldPosition;
     private Vector2 direction;
     public Transform Aimer;
@@ -25,7 +26,9 @@ public class Gunn : MonoBehaviour
     public float shootTime;
     [Header("Inputs")]
     public Vector2 movement;
+    public float arrowStartAmount = 3;
     public Vector2 look;
+    public bool crossBowButtonHeld = false;
 
     [Header("Triggers")]
     public bool isGrapplerButtonHeld;
@@ -35,6 +38,7 @@ public class Gunn : MonoBehaviour
         player = transform.parent.transform;
         grapplersLeft = maxGrapplersleft;
         playerController = player.GetComponent<PlayerController>();
+        arrowsLeft = arrowStartAmount;
     }
     private void Update()
     {
@@ -55,22 +59,15 @@ public class Gunn : MonoBehaviour
            
         // If isGrapplerButtonHeld and shootTime is greater than x recall the grappler?
 
-        // if (crossBowButtonHeld)
-        // {
-        //    arrowSpeed += 0.1f;
-        //    if (arrowSpeed > 20f)
-        //    {
-        //     arrowSpeed = 20;
-        //    }
-        // }
-           
-        // if (crossBowButtonReleased)
-        // {
-        //     //Spawning Arrow
-        //     Arrowinst = Instantiate(Arrow, GrapplerSpawn.position, GrappleGun.transform.rotation);
-        //     Arrowinst.GetComponent<ArrowBehavior>().arrowSpeedMultiplier = arrowSpeed;
-        //     arrowSpeed = 0;
-        // }
+        if (crossBowButtonHeld)
+        {
+           arrowSpeed += 0.2f;
+           if (arrowSpeed > 20f)
+           {
+            arrowSpeed = 25;
+           }
+        }
+  
     }
     public void Look(InputValue value, Vector2 movementVAlues)
     {
@@ -95,6 +92,16 @@ public class Gunn : MonoBehaviour
             Destroy(grapplerInst);
             playerController.isConnected = false;
             grapplersLeft += 1;
+        }
+    }
+
+    public void HandleCrossBowRelease(){
+         //Spawning Arrow
+        if (arrowsLeft > 0){
+        Arrowinst = Instantiate(Arrow, GrapplerSpawn.position, GrappleGun.transform.rotation);
+        Arrowinst.GetComponent<ArrowBehavior>().arrowSpeedMultiplier = arrowSpeed;
+        arrowSpeed = 0;
+        arrowsLeft -= 1;
         }
     }
 

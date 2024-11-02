@@ -58,7 +58,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.015998717, y: 0.06899997, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2200490487408646865}
@@ -148,7 +148,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.005122484, w: 0.9999869}
   m_LocalPosition: {x: -8.08, y: -1.75, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5502265180640148481}
@@ -455,7 +455,7 @@ MonoBehaviour:
   - {x: 0.5085087, y: -0.5030463, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -23402
+  m_InstanceId: -22988
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5085087, y: 0.5030463, z: 0}
@@ -571,4 +571,5 @@ MonoBehaviour:
   shootTime: 0
   movement: {x: 0, y: 0}
   look: {x: 0, y: 0}
+  crossBowButtonHeld: 0
   isGrapplerButtonHeld: 0

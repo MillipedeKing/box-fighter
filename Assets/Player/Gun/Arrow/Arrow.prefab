@@ -165,7 +165,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.9454185, b: 0, a: 1}
+  m_Color: {r: 0.6037736, g: 0.37252417, b: 0.0085439505, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -273,7 +273,7 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -9378
+  m_InstanceId: -24586
   m_LocalBounds:
     m_Center: {x: -0.00000023841858, y: 0, z: 0}
     m_Extent: {x: 0.50000024, y: 0.5, z: 0}
@@ -291,6 +291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowSpeed: 50
   arrowSpeedMultiplier: 0.1
+  damage: 10
 --- !u!96 &182017697611710874
 TrailRenderer:
   serializedVersion: 3
