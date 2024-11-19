@@ -33,7 +33,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""id"": ""7d4f01df-e0c3-4cf2-8925-7b5d0fed4dcd"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -144,7 +144,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""dashbutton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

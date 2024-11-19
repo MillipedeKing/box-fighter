@@ -14,7 +14,6 @@ public class Gunn : MonoBehaviour
     private GameObject grapplerInst;
     public GameObject Arrowinst;
     public GameObject Arrow;
-    public float arrowsLeft;
     private Vector2 worldPosition;
     private Vector2 direction;
     public Transform Aimer;
@@ -26,8 +25,7 @@ public class Gunn : MonoBehaviour
     public float shootTime;
     [Header("Inputs")]
     public Vector2 movement;
-    public float arrowStartAmount = 3;
-    public Vector2 look;
+        public Vector2 look;
     public bool crossBowButtonHeld = false;
 
     [Header("Triggers")]
@@ -38,7 +36,6 @@ public class Gunn : MonoBehaviour
         player = transform.parent.transform;
         grapplersLeft = maxGrapplersleft;
         playerController = player.GetComponent<PlayerController>();
-        arrowsLeft = arrowStartAmount;
     }
     private void Update()
     {
@@ -97,16 +94,14 @@ public class Gunn : MonoBehaviour
 
     public void HandleCrossBowRelease(){
          //Spawning Arrow
-        if (arrowsLeft > 0){
         Arrowinst = Instantiate(Arrow, GrapplerSpawn.position, GrappleGun.transform.rotation);
         ArrowBehavior arrowBehavior = Arrowinst.GetComponent<ArrowBehavior>();
         arrowBehavior.arrowSpeedMultiplier = arrowSpeed;
         arrowBehavior.playerController = playerController;
         arrowSpeed = 0;
-        arrowsLeft -= 1;
         }
     }
 
     // Add method for crossBowButton
-}
+
 

@@ -239,6 +239,7 @@ public class PlayerController : MonoBehaviour, IDamageable
             rb.gravityScale = 0;
             myCollider.enabled = false;
             isDead = true;
+            GameManager.instance.OnPlayerDied();
         }
     }
     public bool IsDead() {
@@ -247,7 +248,6 @@ public class PlayerController : MonoBehaviour, IDamageable
     private void ghostMode()
     {
         rb.velocity = new Vector2(horizontal * speed, vertical * speed);
-
     }
 
     public void OnLeftTrigger(InputValue value)
