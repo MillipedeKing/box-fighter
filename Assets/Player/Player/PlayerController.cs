@@ -99,13 +99,6 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
     }
 
-    public void OnDashbutton(InputValue value){
-        if (value != null && value.Get<float>() > 0.5f)
-        {
-            dashButtonPressed = value.isPressed;
-        }
-    }
-
     public void OnMove(InputValue value) {
         movementValues = value.Get<Vector2>();
         horizontal = movementValues.x;
@@ -146,6 +139,10 @@ public class PlayerController : MonoBehaviour, IDamageable
     public void OnJump(InputValue value) {
         isJumpPressed = value.isPressed;
         wasJumpJustPressed = isJumpPressed;
+    }
+
+    public void OnDashbutton(InputValue value){
+        dashButtonPressed = value.isPressed;
     }
 
     public void Jump()

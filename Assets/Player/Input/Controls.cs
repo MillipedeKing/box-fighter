@@ -142,7 +142,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""fd2a0da6-dff0-475b-a68c-7b7047ab2a92"",
                     ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""dashbutton"",
