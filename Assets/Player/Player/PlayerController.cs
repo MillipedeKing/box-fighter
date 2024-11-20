@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     private bool isGrounded()
     {
         if (isConnected) {
-            return true;
+            return false;
         }
         
         groundhit = Physics2D.BoxCast(myCollider.bounds.center, myCollider.bounds.size, 0f, Vector2.down, ExtraHieght, groundLayer);
@@ -251,11 +251,16 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         // Debug.Log(value.Get<float>());
         if (!isDead){
-        if (value != null && value.Get<float>() > 0.5f) {
-            gun.ShootGrappler();
-        } else {
-            gun.RecallGrappler();
-        }
+            if (value != null && value.Get<float>() > 0.5f) {
+                gun.ShootGrappler();
+            } else {
+                if (isConnected) {
+                    // Jump at end of grapple.
+                    // Don't have to keep it, just try it out.
+                    rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+                }
+                gun.RecallGrappler();
+            }
         }
     }
     public void OnRightTrigger(InputValue value)

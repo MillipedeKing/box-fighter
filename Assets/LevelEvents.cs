@@ -18,7 +18,7 @@ public class LevelEvents : MonoBehaviour
           gravity = System.MathF.Round(UnityEngine.Random.Range( -15 , 4));
           defaultgravity = Physics2D.gravity;
           Physics2D.gravity = new Vector2(0, gravity);
-        
+          Debug.Log("Gravity was " + defaultgravity.ToString() + " and is now " + Physics2D.gravity.ToString());
     }
   
 }
