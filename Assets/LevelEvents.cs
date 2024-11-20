@@ -13,7 +13,8 @@ public class LevelEvents : MonoBehaviour
     public static void StartEvent()
     {
           defaultgravity = Physics2D.gravity;
-          Physics2D.gravity = new Vector2(0, -8.8f);
+          Physics2D.gravity = new Vector2(0, -6f);
+          Debug.Log("Gravity was " + defaultgravity.ToString() + " and is now " + Physics2D.gravity.ToString());
     }
   
 }

@@ -67,8 +67,7 @@ public class GameManager : MonoBehaviour
         if (events == 1)
         {
             //event happens!
-            // LevelEvents.StartEvent();
-            Debug.Log(events);    
+            LevelEvents.StartEvent();
         }
         
     }
