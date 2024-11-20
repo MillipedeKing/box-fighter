@@ -63,11 +63,11 @@ public class GameManager : MonoBehaviour
     public void RandomEvent()
     {
         
-        events = MathF.Round(UnityEngine.Random.Range(0,1000));
+        events = MathF.Round(UnityEngine.Random.Range(0,100000));
         if (events == 1)
         {
-            //event happens!
-            // LevelEvents.StartEvent();
+            // event happens!
+            LevelEvents.StartEvent();
             Debug.Log(events);    
         }
         
