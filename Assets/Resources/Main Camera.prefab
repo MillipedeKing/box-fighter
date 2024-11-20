@@ -153,10 +153,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targets: []
   offset: {x: 0, y: 1.5, z: -10}
-  minZoom: 100
-  maxZoom: 50
+  minZoom: 120
+  maxZoom: 80
   zoomLimiter: 10
-  smoothTime: 0.5
+  smoothTime: 0.25
 --- !u!114 &4233632074890100361
 MonoBehaviour:
   m_ObjectHideFlags: 0
