@@ -39,8 +39,11 @@ public class ArrowBehavior : MonoBehaviour
 
   private void OnCollisionEnter2D(Collision2D collision)
     {
+       if (collision.gameObject.tag == "player")
+      {
       isActive = false;
        IDamageable iDamageable = collision.gameObject.GetComponent<IDamageable>();
+     
       if (iDamageable != null && damageActive)
       {
         //damage thing
@@ -52,6 +55,11 @@ public class ArrowBehavior : MonoBehaviour
         if (iDamageable.IsDead()) {
           playerController.score += 1;
         }
+      }
+      }
+      else 
+      {
+        damage = 0;
       }
     }
      private void OnCollisionEnter2D(){

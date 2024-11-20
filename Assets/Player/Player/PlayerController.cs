@@ -265,7 +265,8 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         // Shoot Arrow
         //   Debug.Log(value.Get<float>());
-        if (!isDead){
+        if (!isDead)
+        {
         if (value != null && value.Get<float>() > 0.5f) {
             gun.crossBowButtonHeld = true;
         } else {
@@ -274,6 +275,14 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
         }
     }
-}
+        public void CheckIfFall()
+    {
+        if (transform.position.y < -87)
+        {
+            isDead = true;
+        }
+    }
+    }
+
 
 

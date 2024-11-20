@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public List<PlayerController> players = new() {};
     private List<String> levels= new() {"Multiplayer","Forest 1",};
     public MultipleTargetCamera cam;
+    public float events;
 
 
     public void OnPlayerJoined(PlayerInput newPlayer) {
@@ -23,6 +24,10 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void Update()
+    {
+        RandomEvent();
+    }
     public void OnPlayerDied()
     {
         int playersAlive = 0;
@@ -41,6 +46,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
+        Physics2D.gravity = new Vector2(0, -9.8f);
         int sceneIndex = (int)MathF.Round(UnityEngine.Random.Range( 0 , levels.Count));
         Debug.Log(sceneIndex);
         SceneManager.LoadScene(levels[sceneIndex]);
@@ -51,5 +57,19 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         cam = Camera.main.GetComponent<MultipleTargetCamera>();
+        Physics2D.gravity = new Vector2(0, -9.8f);
+    }
+
+    public void RandomEvent()
+    {
+        
+        events = MathF.Round(UnityEngine.Random.Range(0,1000));
+        if (events == 1)
+        {
+            //event happens!
+            // LevelEvents.StartEvent();
+            Debug.Log(events);    
+        }
+        
     }
 }
