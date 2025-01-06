@@ -50,11 +50,17 @@ public class PlayerController : MonoBehaviour, IDamageable
     public bool isConnected = false;
 
     [Header("Health")]
-    public float HP;
+    [SerializeField] private float HP;
+    [SerializeField] GameObject floatingDamage;
     public float maxHp;
     public bool isDead;
     [Header("gun")]
     public Gunn gun;
+
+    private DamageFlash _damageFlash;
+
+    [SerializeField] private ParticleSystem damageParticles;
+    private ParticleSystem damageParticlesInstance;
 
     void Start()
     {
@@ -63,6 +69,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         myCollider = gameObject.GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
         gun = gameObject.GetComponentInChildren<Gunn>();
+        _damageFlash = GetComponent<DamageFlash>();
     }
 
     // Update is called once per frame
@@ -230,6 +237,12 @@ public class PlayerController : MonoBehaviour, IDamageable
     public void Damage(float damageAmount)
     {
         HP -= damageAmount;
+        if(damageAmount > 0)
+        {
+        SpawnDamageParticles();
+        _damageFlash.CallDamageFlash();
+        ShowDamage(damageAmount.ToString());
+        }
 
         if (HP <= 0)
         {
@@ -282,6 +295,20 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (transform.position.y < -87)
         {
             isDead = true;
+        }
+    }
+
+    private void SpawnDamageParticles()
+    {
+        damageParticlesInstance = Instantiate(damageParticles, transform.position, Quaternion.identity);
+    }
+
+    void ShowDamage(string text)
+    {
+        if(floatingDamage)
+        {
+            GameObject prefab= Instantiate(floatingDamage, transform.position, Quaternion.identity);
+            prefab.GetComponentInChildren<TextMesh>().text = text;
         }
     }
     }

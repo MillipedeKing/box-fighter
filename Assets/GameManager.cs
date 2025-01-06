@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public List<PlayerController> players = new() {};
-    private List<String> levels= new() {"Multiplayer","Forest 1",};
+    private List<String> levels= new() {"Factory 1","Forest 1"," Frost 1"};
     public MultipleTargetCamera cam;
     public float events;
 
@@ -63,11 +63,11 @@ public class GameManager : MonoBehaviour
     public void RandomEvent()
     {
         
-        events = MathF.Round(UnityEngine.Random.Range(0,100000));
+        events = MathF.Round(UnityEngine.Random.Range(0,1000));
         if (events == 1)
         {
             //event happens!
-            LevelEvents.StartEvent();
+            // LevelEvents.StartEvent();
         }
         
     }

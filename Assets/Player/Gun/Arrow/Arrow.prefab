@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 182017697611710874}
   m_Layer: 0
   m_Name: Arrow
-  m_TagString: Untagged
+  m_TagString: arrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -292,6 +292,8 @@ MonoBehaviour:
   arrowSpeed: 50
   arrowSpeedMultiplier: 0.1
   damage: 10
+  damageActive: 0
+  playerController: {fileID: 0}
 --- !u!96 &182017697611710874
 TrailRenderer:
   serializedVersion: 3
