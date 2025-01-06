@@ -57,8 +57,6 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         cam = Camera.main.GetComponent<MultipleTargetCamera>();
-        GameObject mainCamera = Instantiate(Resources.Load<GameObject>("Main Camera"), new Vector3(0,0,-10f), Quaternion.identity);
-        cam = mainCamera.GetComponent<MultipleTargetCamera>();
         Physics2D.gravity = new Vector2(0, -9.8f);
     }
 

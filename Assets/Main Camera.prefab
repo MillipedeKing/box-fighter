@@ -153,11 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targets: []
   offset: {x: 0, y: 1.5, z: -10}
-<<<<<<< HEAD:Assets/Main Camera.prefab
   minZoom: 100
-=======
-  minZoom: 120
->>>>>>> 08566a1cd493b6f0cfc46e03007842f04cd803c0:Assets/Resources/Main Camera.prefab
   maxZoom: 80
   zoomLimiter: 10
   smoothTime: 0.25
