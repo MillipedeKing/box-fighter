@@ -6,6 +6,11 @@ TagManager:
   tags:
   - player
   - arrow
+  - Green
+  - blue
+  - yellow
+  - red
+  - pink
   layers:
   - Default
   - TransparentFX
@@ -16,7 +21,7 @@ TagManager:
   - ground
   - 
   - PlayerProjectile
-  - 
+  - face
   - 
   - 
   - 

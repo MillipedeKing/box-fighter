@@ -43,7 +43,7 @@ Material:
     m_Floats:
     - _FlashAmount: 1
     m_Colors:
-    - _FlashColor: {r: 0.7490197, g: 0.7490197, b: 0.7490197, a: 1}
+    - _FlashColor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &1394816035559550948
 MonoBehaviour:
